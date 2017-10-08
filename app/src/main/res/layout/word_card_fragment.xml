@@ -1,0 +1,32 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <com.example.swipacardlibrary.view.Card
+            android:id="@+id/card_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="16dp"
+            android:layout_weight="2"
+            android:visibility="visible"
+            app:back_color="@color/secondary_text"
+            app:cardCornerRadius="8dp"
+            app:card_background="@color/colorPrimary"
+
+            app:primary_color="@color/primary_text">
+
+        </com.example.swipacardlibrary.view.Card>
+    </LinearLayout>
+
+</RelativeLayout>
+
+
+

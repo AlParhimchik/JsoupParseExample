@@ -8,4 +8,8 @@
         <attr name="back_color" format="integer"></attr>
 
     </declare-styleable>
+    <attr name="card_button_theme_positive" format="reference"></attr>
+    <attr name="card_button_theme_negative" format="reference"></attr>
+    <attr name="card_button_theme_linear_layout" format="reference"></attr>
+    <attr name="card_button_theme_relative_layout" format="reference"></attr>
 </resources>

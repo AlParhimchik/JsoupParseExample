@@ -12,4 +12,6 @@
     <string name="add_word">Добавить</string>
     <string name="transcription">Введите траскрипцию</string>
     <string name="cancel">Отмена</string>
+    <string name="positiv_text">помню</string>
+    <string name="negativ_text">не помню</string>
 </resources>

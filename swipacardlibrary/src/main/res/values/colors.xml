@@ -6,5 +6,8 @@
     <color name="startColor">#0d776b</color>
     <color name="endColor">#00a996</color>
     <color name="white">#FFFFFF</color>
-    <color name="transparent">#99ffffff</color>
+    <color name="positive_color">#388e3c</color>
+    <color name="btn_unchecked_color">@color/white</color>
+    <color name="negative_color">#ef5350</color>
+    <color name="full_transparent">#00ffffff</color>
 </resources>

@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import com.example.sashok.jsoupparserapp.R;
 import com.example.sashok.jsoupparserapp.adapter.CardWithWordsAdapter;
@@ -79,7 +80,7 @@ public class ShowCardWithWordsFragment extends AbsFragment  {
                             new_word.setTranslation(strings[5]);
                             new_word.setTranscription(strings[3]);
                             new_word.setOriginal(strings[1]);
-                            new_word.setExample(strings[9]);
+                            new_word.setExample(strings[9].replace("&rsquo;","'"));
                             new_word.setExapmleTranslate(strings[11]);
                             words.add(new_word);
                         }
@@ -125,7 +126,6 @@ public class ShowCardWithWordsFragment extends AbsFragment  {
         View view = inflater.inflate(R.layout.word_card_fragment, container, false);
         swipeCardView = (Card) view.findViewById(R.id.card_view);
         //swipeRefreshLayout=(SwipeRefreshLayout)view.findViewById(R.id.swipe_refresh_layout);
-        parent_layout=(LinearLayout)swipeCardView.getParent();
         arrayAdapter = new CardWithWordsAdapter(getContext(), al);
         swipeCardView.setAdapter(arrayAdapter);
 
@@ -139,10 +139,10 @@ public class ShowCardWithWordsFragment extends AbsFragment  {
     private void setVisibility() {
         if (al.size() == 0) {
 //            swipeRefreshLayout.setRefreshing(true);
-            parent_layout.setVisibility(View.INVISIBLE);
+            swipeCardView.setVisibility(View.INVISIBLE);
         } else {
 //            swipeRefreshLayout.setRefreshing(false);
-            parent_layout.setVisibility(View.VISIBLE);
+            swipeCardView.setVisibility(View.VISIBLE);
         }
     }
 }

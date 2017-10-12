@@ -6,12 +6,12 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
-import com.example.sashok.jsoupparserapp.helper.FolderUtil;
-import com.example.sashok.jsoupparserapp.helper.FragmentBuilder;
-import com.example.sashok.jsoupparserapp.helper.ShowCardBuilder;
-import com.example.sashok.jsoupparserapp.helper.ShowFolderBuilder;
+import com.example.sashok.jsoupparserapp.builder.FragmentBuilder;
+import com.example.sashok.jsoupparserapp.builder.ShowCardBuilder;
+import com.example.sashok.jsoupparserapp.builder.ShowFolderBuilder;
 import com.example.sashok.jsoupparserapp.interfaces.Folderlistener;
 import com.example.sashok.jsoupparserapp.model.Folder;
+import com.example.sashok.jsoupparserapp.util.FileFolderUtil;
 
 import java.util.List;
 
@@ -23,30 +23,24 @@ public class MainActivity extends AppCompatActivity implements Folderlistener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         replaceFragment(new ShowFolderBuilder().build());
-        //        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                FolderUtil.saveFoldersOnFile(MainActivity.this, folders);
-//            }
-//        });
-    }
-
-    public void deleteFile() {
-
-        FolderUtil.deleteFile(this);
-
 
     }
-
-
-    public void readFromFile() {
-        List<Folder> new_folders;
-        new_folders = FolderUtil.readFoldersFromFile(this);
-        if (new_folders != null) Log.i("TAG", "has elements");
-        else
-            Log.i("TAG", "no elems");
-    }
+//
+//    public void deleteFile() {
+//
+//        FileFolderUtil.deleteFile(this);
+//
+//
+//    }
+//
+//
+//    public void readFromFile() {
+//        List<Folder> new_folders;
+//        new_folders = FolderUtil.readFoldersFromFile(this);
+//        if (new_folders != null) Log.i("TAG", "has elements");
+//        else
+//            Log.i("TAG", "no elems");
+//    }
 
     public void replaceFragment(Fragment fragment) {
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();

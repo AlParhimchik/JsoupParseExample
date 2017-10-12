@@ -7,7 +7,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * Created by sashok on 1.10.17.
  */
 
-public class ApiClient {
+public class TranslateApiClient {
     public static final String BASE_URL = "https://translate.yandex.net/api/v1.5/tr.json/";
     private static Retrofit retrofit = null;
 

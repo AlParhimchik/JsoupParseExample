@@ -58,17 +58,7 @@ public class FolderListAdapter extends RecyclerView.Adapter<FolderListAdapter.Fo
         }
         if (names.length() >= 1) names = names.substring(0, names.length() - 1);
         holder.folder_name.setText(names);
-        Glide.with(mContext).load(cur_folder.getFolderURL()).listener(new RequestListener<String, GlideDrawable>() {
-            @Override
-            public boolean onException(Exception e, String model, Target<GlideDrawable> target, boolean isFirstResource) {
-                return false;
-            }
-
-            @Override
-            public boolean onResourceReady(GlideDrawable resource, String model, Target<GlideDrawable> target, boolean isFromMemoryCache, boolean isFirstResource) {
-                return false;
-            }
-        }).error(R.drawable.football_2778583_960_720).dontAnimate().into(holder.forder_image);
+        Glide.with(mContext).load(cur_folder.getFolderURL()).error(R.drawable.default_folder).dontAnimate().into(holder.forder_image);
 
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override

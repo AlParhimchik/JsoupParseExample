@@ -13,8 +13,11 @@ import android.view.ViewGroup;
 import com.example.sashok.jsoupparserapp.MainActivity;
 import com.example.sashok.jsoupparserapp.R;
 import com.example.sashok.jsoupparserapp.adapter.FolderListAdapter;
-import com.example.sashok.jsoupparserapp.helper.FolderUtil;
+import com.example.sashok.jsoupparserapp.interfaces.ShowFoldersInterface;
 import com.example.sashok.jsoupparserapp.model.Folder;
+import com.example.sashok.jsoupparserapp.util.AssetFolderUtil;
+import com.example.sashok.jsoupparserapp.util.FileFolderUtil;
+import com.example.sashok.jsoupparserapp.util.FolderUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +26,7 @@ import java.util.List;
  * Created by sashok on 2.10.17.
  */
 
-public class ShowFoldersFragment extends AbsFragment implements SwipeRefreshLayout.OnRefreshListener {
+public class ShowFoldersFragment extends AbsFragment implements SwipeRefreshLayout.OnRefreshListener, ShowFoldersInterface {
     private RecyclerView rvFolders;
     private FolderListAdapter mAdapter;
     private List<Folder> folders;
@@ -54,30 +57,21 @@ public class ShowFoldersFragment extends AbsFragment implements SwipeRefreshLayo
         return view;
     }
 
-    private void getFolders() {
+    @Override
+    public void getFolders() {
         swipeRefreshLayout.setRefreshing(true);
-        List<Folder> saved_folders = FolderUtil.readFromassets(getActivity());
+        List<Folder> saved_folders = FolderUtil.fetchFolders(new AssetFolderUtil(getActivity()));
         if (saved_folders == null) {
-            //push data from internet
+            saved_folders = FolderUtil.fetchFolders(new FileFolderUtil(getActivity()));
         } else {
             folders = saved_folders;
-            onAllFoldersTranslated();
+            onFoldersFetches();
         }
     }
 
-    private void onAllFoldersTranslated() {
-        swipeRefreshLayout.setRefreshing(false);
+    @Override
+    public void onFolderClicked(Folder folder) {
 
-        mAdapter = new FolderListAdapter(getActivity(), this.folders, (MainActivity) getActivity());
-        rvFolders.setAdapter(mAdapter);
-
-
-    }
-
-    public static ShowFoldersFragment newInstance(Bundle args) {
-        ShowFoldersFragment fragment = new ShowFoldersFragment();
-        fragment.setArguments(args);
-        return fragment;
     }
 
     @Override
@@ -86,4 +80,18 @@ public class ShowFoldersFragment extends AbsFragment implements SwipeRefreshLayo
         getFolders();
     }
 
+
+    @Override
+    public void onFoldersFetches() {
+        swipeRefreshLayout.setRefreshing(false);
+        mAdapter = new FolderListAdapter(getActivity(), this.folders, (MainActivity) getActivity());
+        rvFolders.setAdapter(mAdapter);
+
+    }
+
+    public static ShowFoldersFragment newInstance(Bundle args) {
+        ShowFoldersFragment fragment = new ShowFoldersFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
 }

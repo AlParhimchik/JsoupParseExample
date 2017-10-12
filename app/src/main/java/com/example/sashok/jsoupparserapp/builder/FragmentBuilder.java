@@ -1,4 +1,4 @@
-package com.example.sashok.jsoupparserapp.helper;
+package com.example.sashok.jsoupparserapp.builder;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;

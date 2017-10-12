@@ -19,7 +19,7 @@ public class AnimatorHelper {
     private static Animation shrink_animation;
     private static Animation grow_animation;
 
-    public static void flipView(Context context, final View animate_view, final CardListener<WordInterface> listener) {
+    public static void flipView(Context context, final View animate_view, final CardListener listener) {
         shrink_animation = AnimationUtils.loadAnimation(context, R.anim.shrink_word_card_animation);
         grow_animation = AnimationUtils.loadAnimation(context, R.anim.grow_word_card_animation);
         shrink_animation.setAnimationListener(new Animation.AnimationListener() {
